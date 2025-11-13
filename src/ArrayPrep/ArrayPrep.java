@@ -1,4 +1,5 @@
 package ArrayPrep;
+import java.lang.Math;
 
 public class ArrayPrep {
     /*
@@ -46,4 +47,37 @@ Sample Output 2:
 0 8 6 5
 1 0 2 2 0
     * */
+    public static void sumOfTwoArrays(int arr1[], int arr2[], int output[]) {
+        int i = arr1.length - 1;
+        int j = arr2.length - 1;
+        int k = output.length - 1;
+        int carry = 0;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int sum = carry;
+
+            if (i >= 0) sum += arr1[i--];
+            if (j >= 0) sum += arr2[j--];
+
+            output[k--] = sum % 10;
+            carry = sum / 10;
+        }
+
+        // print the result
+        for (int val : output) {
+            System.out.print(val + " ");
+        }
+    }
+
+
+
+
+    public static void main(String[] args) {
+        int[] arr1 = {1,2,3,4};
+        int[] arr2 = {1,2,3,4};
+        int[] out = new int[arr1.length];
+
+        sumOfTwoArrays(arr1, arr2, out);
+
+    }
 }

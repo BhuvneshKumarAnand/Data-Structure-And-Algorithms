@@ -105,6 +105,31 @@ Note:
         }
     }
 
+    /* Problem statement
+You have been given a random integer array/list(ARR) of size N. You have been required to push all the zeros that are present in the array/list to the end of it. Also, make sure to maintain the relative order of the non-zero elements.
+
+Note:
+Change in the input array/list itself. You don't need to return or print the elements.
+
+You need to do this in one scan of array only. Don't use extra space. */
+
+    public static void pushZerosAtEnd(int[] arr) {
+        int n = arr.length;
+        int nonZeroPos = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != 0) {
+                if (i != nonZeroPos) {
+                    int temp = arr[i];
+                    arr[i] = arr[nonZeroPos];
+                    arr[nonZeroPos] = temp;
+                }
+                nonZeroPos++;
+            }
+        }
+    }
+
+
 
     public static void main(String[] args) {
         int[] arr1 = {2, 0, 2, 1, 0, 1};
@@ -112,8 +137,8 @@ Note:
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);
-        sort012(arr1);
-
+//        sort012(arr1);
+        pushZerosAtEnd(arr1);
         System.out.println(Arrays.toString(arr1));
 
     }

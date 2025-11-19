@@ -1,6 +1,7 @@
 package ArrayPrep;
 
 import java.lang.Math;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ArrayPrep {
@@ -129,17 +130,44 @@ You need to do this in one scan of array only. Don't use extra space. */
         }
     }
 
+    /* Problem statement
+You have been given two integer arrays/list(ARR1 and ARR2) of size N and M, respectively. You need to print their intersection; An intersection for this problem can be defined when both the arrays/lists contain a particular value or to put it in other words, when there is a common value that exists in both the arrays/lists.
+
+Note :
+Input arrays/lists can contain duplicate elements.
+
+The intersection elements printed would be in ascending order. */
+
+    public static void intersection(int[] arr1, int[] arr2) {
+        //Your code goes here
+        int n = arr1.length;
+        int m = arr2.length;
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (arr1[i] == arr2[j]) {
+                    System.out.print(arr1[i] + " ");
+                    arr1[i] = arr2[j] = -1;
+                }
+            }
+        }
+
+    }
+
 
 
     public static void main(String[] args) {
         int[] arr1 = {2, 0, 2, 1, 0, 1};
-//        int[] arr2 = {1,2,3,4};
+        int[] arr2 = {1,2,3,4};
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);
 //        sort012(arr1);
-        pushZerosAtEnd(arr1);
-        System.out.println(Arrays.toString(arr1));
+//        pushZerosAtEnd(arr1);
+        intersection(arr1, arr2);
 
     }
 }

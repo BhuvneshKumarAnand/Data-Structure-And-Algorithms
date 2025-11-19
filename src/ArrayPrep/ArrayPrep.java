@@ -1,5 +1,7 @@
 package ArrayPrep;
+
 import java.lang.Math;
+import java.util.Arrays;
 
 public class ArrayPrep {
     /*
@@ -70,14 +72,49 @@ Sample Output 2:
     }
 
 
+    /* Problem statement
+You are given an integer array/list(ARR) of size N. It contains only 0s, 1s and 2s. Write a solution to sort this array/list in a 'single scan'.
+
+'Single Scan' refers to iterating over the array/list just once or to put it in other words, you will be visiting each element in the array/list just once.
+
+Note:
+1. You need to change in the given array/list itself. Hence, no need to return or print anything.
+2. You are not allowed to sort the list/array directly. */
+    public static void sort012(int[] arr) {
+        int low = 0;
+        int mid = 0;
+        int high = arr.length - 1;
+
+        while (mid <= high) {
+            if (arr[mid] == 0) {
+                // Swap arr[low] and arr[mid]
+                int temp = arr[low];
+                arr[low] = arr[mid];
+                arr[mid] = temp;
+                low++;
+                mid++;
+            } else if (arr[mid] == 1) {
+                mid++; // leave 1s in the middle
+            } else { // arr[mid] == 2
+                // Swap arr[mid] and arr[high]
+                int temp = arr[mid];
+                arr[mid] = arr[high];
+                arr[high] = temp;
+                high--;
+            }
+        }
+    }
 
 
     public static void main(String[] args) {
-        int[] arr1 = {1,2,3,4};
-        int[] arr2 = {1,2,3,4};
-        int[] out = new int[arr1.length];
+        int[] arr1 = {2, 0, 2, 1, 0, 1};
+//        int[] arr2 = {1,2,3,4};
+//        int[] out = new int[arr1.length];
 
-        sumOfTwoArrays(arr1, arr2, out);
+//        sumOfTwoArrays(arr1, arr2, out);
+        sort012(arr1);
+
+        System.out.println(Arrays.toString(arr1));
 
     }
 }

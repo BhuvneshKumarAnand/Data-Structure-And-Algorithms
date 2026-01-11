@@ -194,6 +194,24 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
 
 
+    public static int tripletSum(int[] arr, int num) {
+        //Your code goes here
+        int n = arr.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (arr[i] + arr[j] + arr[k] == num) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+
+    }
+
+
 
     public static void main(String[] args) {
         int[] arr1 = {2, 0, 2, 1, 0, 1};

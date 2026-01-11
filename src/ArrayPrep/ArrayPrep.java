@@ -219,7 +219,7 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
     public static int pairSum(int[] arr, int num) {
         //Your code goes here
-        int count =0;
+        int count = 0;
         int n = arr.length;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
@@ -230,6 +230,38 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         }
 
         return count;
+    }
+
+    /*
+     * Problem statement
+     * You are given an array/list 'ARR' of ‘N’ integers and an integer value ‘TARGET’.
+     * You need to check whether there exist four numbers
+     * (ARR[i], ARR[j], ARR[k], ARR[l]) such that (0 <= i < j < k < l < N)
+     * and ARR[i] + ARR[j] + ARR[k] + ARR[l] = 'TARGET'.
+     * Note:
+     * 1. All four numbers should exist at different indices in the given array.
+     * 2. The answer is case-sensitive.
+     * */
+
+    public static String fourSum(int[] arr, int target, int n) {
+        // Write your code here.
+        if(n<4){
+            return "No";
+        }
+
+        for (int i = 0; i <= n-4; i++) {
+            for (int j = i+1; j <= n-3; j++) {
+                for (int k = j+1; k <= n-2; k++) {
+                    for (int l = k+1; l <= n-1; l++) {
+                        if (arr[i] + arr[j] + arr[k] + arr[l] == target) {
+                            return "Yes";
+                        }
+                    }
+
+                }
+            }
+        }
+        return "No";
     }
 
 

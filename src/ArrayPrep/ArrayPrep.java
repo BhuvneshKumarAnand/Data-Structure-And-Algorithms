@@ -193,7 +193,6 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
     }
 
 
-
     public static int tripletSum(int[] arr, int num) {
         //Your code goes here
         int n = arr.length;
@@ -211,17 +210,39 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
     }
 
+    /*
+     * Problem statement
+     * You have been given an integer array/list(ARR) and a number 'num'.
+     * Find and return the total number of pairs in the array/list which sum to 'num'.
+     * Note: Given array/list can contain duplicate elements.
+     * */
+
+    public static int pairSum(int[] arr, int num) {
+        //Your code goes here
+        int count =0;
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] + arr[j] == num) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
 
 
     public static void main(String[] args) {
-        int[] arr1 = {2, 0, 2, 1, 0, 1};
-        int[] arr2 = {1,2,3,4};
+        int[] arr1 = {0, 6, 0, 0};
+//        int[] arr2 = {1, 2, 3, 4};
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);
 //        sort012(arr1);
 //        pushZerosAtEnd(arr1);
-        intersection(arr1, arr2);
+//        intersection(arr1, arr2);
 
+        System.out.println(pairSum(arr1, 6));
     }
 }

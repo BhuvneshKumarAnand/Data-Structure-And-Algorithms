@@ -334,6 +334,29 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         return false;
     }
 
+    /*
+    * Problem statement
+    You are given a sorted array A consisting of N integers.
+    * Your task is to find the magic index in the given array.
+
+    Note :
+    1. A magic index in an array A[0 ... N - 1] is defined to be an index i such that A[i] = i.
+    2. The elements in the array can be negative.
+    3. The elements in the array can be repeated multiple times.
+    4. There can be more than one magic index in an array.
+    * */
+
+    public static int magicIndex(ArrayList<Integer> a, int n) {
+        // Write your code here
+        int limit = Math.min(n, a.size());
+
+        for (int i = 0; i < limit; i++) {
+            if (a.get(i) == i) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
 

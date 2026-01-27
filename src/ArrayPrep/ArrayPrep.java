@@ -245,14 +245,14 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
     public static String fourSum(int[] arr, int target, int n) {
         // Write your code here.
-        if(n<4){
+        if (n < 4) {
             return "No";
         }
 
-        for (int i = 0; i <= n-4; i++) {
-            for (int j = i+1; j <= n-3; j++) {
-                for (int k = j+1; k <= n-2; k++) {
-                    for (int l = k+1; l <= n-1; l++) {
+        for (int i = 0; i <= n - 4; i++) {
+            for (int j = i + 1; j <= n - 3; j++) {
+                for (int k = j + 1; k <= n - 2; k++) {
+                    for (int l = k + 1; l <= n - 1; l++) {
                         if (arr[i] + arr[j] + arr[k] + arr[l] == target) {
                             return "Yes";
                         }
@@ -263,6 +263,78 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         }
         return "No";
     }
+
+    /*
+    * Problem statement
+    Alice and Bob always loved to play with arrays. Alice took a sorted array
+    * and rotated it clockwise for a certain number of times.
+
+    For example:
+    Alice took a sorted array = [4,6,8,10,11] and if she rotates it by 3, then the array becomes: [8, 10, 11, 4, 6].
+    After rotating a sorted array, Alice gave a number ‘K’ to Bob and asked him to search for a pair in an array whose sum
+    * is equal to K. Since Bob was busy preparing for his semester exams, he asked you to help him.
+
+    You are given an array of integers ARR and a number K.
+    * Your task is to find out whether there exists a pair in the array ARR with sum K or not.
+    * If there exists a pair then you can return TRUE else return FALSE;
+    * */
+
+    public static boolean findPairSum(int[] arr, int target) {
+        Arrays.sort(arr);   // sort in place
+
+        int i = 0;
+        int j = arr.length - 1;
+
+        while (i < j) {
+            int sum = arr[i] + arr[j];
+
+            if (sum == target) {
+                return true;
+            } else if (sum < target) {
+                i++;   // move right to increase sum
+            } else {
+                j--;   // move left to decrease sum
+            }
+        }
+        return false;
+    }
+
+    public static boolean pairSumInRotatedArray(int[] arr, int K) {
+        int n = arr.length;
+
+        // Step 1: Find pivot (largest element)
+        int pivot = -1;
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                pivot = i;
+                break;
+            }
+        }
+
+        // If array is not rotated
+        if (pivot == -1) {
+            pivot = n - 1;
+        }
+
+        int left = (pivot + 1) % n; // smallest element
+        int right = pivot;          // largest element
+
+        // Step 2: Two pointer search (circular)
+        while (left != right) {
+            int sum = arr[left] + arr[right];
+
+            if (sum == K) {
+                return true;
+            } else if (sum < K) {
+                left = (left + 1) % n;
+            } else {
+                right = (right - 1 + n) % n;
+            }
+        }
+        return false;
+    }
+
+
 
 
     public static void main(String[] args) {

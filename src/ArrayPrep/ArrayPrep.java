@@ -358,7 +358,30 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         return -1;
     }
 
+    /*
+    * Problem statement
+    You are given an array of integers 'ARR' containing N elements. Each integer is in the range [1, N-1],
+    * with exactly one element repeated in the array.
 
+    Your task is to find the duplicate element. The duplicate element may be repeated more
+    * than twice in the error, but there will be exactly one element that is repeated in the array.
+
+    Note :
+
+    All the integers in the array appear only once except for precisely one integer which appears two or more times.
+    * */
+
+    public static int findDuplicate(ArrayList<Integer> arr, int n){
+        // Write your code here.
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr.get(i) == arr.get(j)) {
+                    return arr.get(j);
+                }
+            }
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
         int[] arr1 = {0, 6, 0, 0};

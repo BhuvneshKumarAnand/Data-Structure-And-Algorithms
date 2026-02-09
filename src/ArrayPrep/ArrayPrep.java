@@ -484,6 +484,57 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         return sum;
     }
 
+    /*
+    * Longest Common Prefix
+    *
+    Write a function to find the longest common prefix string amongst an array of strings.
+
+    If there is no common prefix, return an empty string "".
+
+
+
+    Example 1:
+
+    Input: strs = ["flower","flow","flight"]
+    Output: "fl"
+    Example 2:
+
+    Input: strs = ["dog","racecar","car"]
+    Output: ""
+    Explanation: There is no common prefix among the input strings.
+
+
+    Constraints:
+
+    1 <= strs.length <= 200
+    0 <= strs[i].length <= 200
+    strs[i] consists of only lowercase English letters if it is non-empty.
+    * */
+
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        // Take the first string as reference
+        String first = strs[0];
+
+        for (int i = 0; i < first.length(); i++) {
+            char ch = first.charAt(i);
+
+            // Compare this character with same index in other strings
+            for (int j = 1; j < strs.length; j++) {
+                // If index exceeds length OR character mismatch
+                if (i >= strs[j].length() || strs[j].charAt(i) != ch) {
+                    return first.substring(0, i);
+                }
+            }
+        }
+
+        // Entire first string is a common prefix
+        return first;
+    }
+
+
     public static void main(String[] args) {
         int[] arr1 = {0, 6, 0, 0};
 //        int[] arr2 = {1, 2, 3, 4};

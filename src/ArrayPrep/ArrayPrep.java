@@ -371,7 +371,7 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
     All the integers in the array appear only once except for precisely one integer which appears two or more times.
     * */
 
-    public static int findDuplicate(ArrayList<Integer> arr, int n){
+    public static int findDuplicate(ArrayList<Integer> arr, int n) {
         // Write your code here.
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
@@ -381,6 +381,25 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
             }
         }
         return -1;
+    }
+
+
+    /*
+    * Reverse String
+    * Write a function that reverses a string. The input string is given as an array of characters s.
+      You must do this by modifying the input array in-place with O(1) extra memory.
+    * */
+
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length - 1;
+        while (left < right) {
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            left++;
+            right--;
+        }
     }
 
     public static void main(String[] args) {

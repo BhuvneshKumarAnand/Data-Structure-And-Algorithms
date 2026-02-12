@@ -29,7 +29,7 @@ Every close bracket has a corresponding open bracket of the same type.
                         (stack.peek() == '{' && c == '}')
                 ) {
                     stack.pop();
-                }else {
+                } else {
                     return false;
                 }
             }
@@ -55,16 +55,32 @@ Every close bracket has a corresponding open bracket of the same type.
     Explanation: "leeto" did not occur in "leetcode", so we return -1.
     * */
 
-    public int strStr(String haystack, String needle) {
+    /*public int strStr(String haystack, String needle) {
         for (int i = 0; i <= haystack.length() - needle.length(); i++) {
             if (haystack.substring(i, i + needle.length()).equals(needle)) {
                 return i;
             }
         }
         return -1;
+    }*/
+
+
+    public int strStr(String haystack, String needle) {
+        return -1;
+    }
+
+    /*
+    * Generate all substrings
+    * */
+    public static void printAllSubStrings(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i; j < str.length(); j++) {
+                System.out.println(str.substring(i, j));
+            }
+        }
     }
 
     public static void main(String[] args) {
-
+        printAllSubStrings("abcdefg");
     }
 }

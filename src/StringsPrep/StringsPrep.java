@@ -2,6 +2,7 @@ package StringsPrep;
 
 import java.util.Deque;
 import java.util.ArrayDeque;
+import java.util.*;
 
 
 public class StringsPrep {
@@ -55,17 +56,12 @@ Every close bracket has a corresponding open bracket of the same type.
     Explanation: "leeto" did not occur in "leetcode", so we return -1.
     * */
 
-    /*public int strStr(String haystack, String needle) {
+    public int strStr(String haystack, String needle) {
         for (int i = 0; i <= haystack.length() - needle.length(); i++) {
             if (haystack.substring(i, i + needle.length()).equals(needle)) {
                 return i;
             }
         }
-        return -1;
-    }*/
-
-
-    public int strStr(String haystack, String needle) {
         return -1;
     }
 
@@ -80,7 +76,66 @@ Every close bracket has a corresponding open bracket of the same type.
         }
     }
 
+    /*
+    * Valid Palindrome
+    *
+    A phrase is a palindrome if, after converting all uppercase letters into lowercase
+    * letters and removing all non-alphanumeric characters, it reads the same forward
+    * and backward. Alphanumeric characters include letters and numbers.
+
+    Given a string s, return true if it is a palindrome, or false otherwise.
+
+
+
+    Example 1:
+
+    Input: s = "A man, a plan, a canal: Panama"
+    Output: true
+    Explanation: "amanaplanacanalpanama" is a palindrome.
+    Example 2:
+
+    Input: s = "race a car"
+    Output: false
+    Explanation: "raceacar" is not a palindrome.
+    Example 3:
+
+    Input: s = " "
+    Output: true
+    Explanation: s is an empty string "" after removing non-alphanumeric characters.
+    Since an empty string reads the same forward and backward, it is a palindrome.
+
+
+    Constraints:
+
+    1 <= s.length <= 2 * 105
+    s consists only of printable ASCII characters.
+    * */
+
+    public static boolean isPalindrome(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isLetterOrDigit(ch)){
+                sb.append(Character.toLowerCase(ch));
+            }
+        }
+
+        System.out.println(sb.toString());
+
+        int left = 0;
+        int right = sb.length() - 1;
+
+        while (left < right) {
+            if (sb.charAt(left) != sb.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        printAllSubStrings("abcdefg");
+        isPalindrome("A man, a plan, a canal: Panama");
     }
 }

@@ -66,8 +66,8 @@ Every close bracket has a corresponding open bracket of the same type.
     }
 
     /*
-    * Generate all substrings
-    * */
+     * Generate all substrings
+     * */
     public static void printAllSubStrings(String str) {
         for (int i = 0; i < str.length(); i++) {
             for (int j = i; j < str.length(); j++) {
@@ -115,7 +115,7 @@ Every close bracket has a corresponding open bracket of the same type.
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (Character.isLetterOrDigit(ch)){
+            if (Character.isLetterOrDigit(ch)) {
                 sb.append(Character.toLowerCase(ch));
             }
         }
@@ -169,9 +169,9 @@ Every close bracket has a corresponding open bracket of the same type.
     * */
 
     public static int lengthOfLastWord(String s) {
-        int length =0;
+        int length = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
-            char ch =  s.charAt(i);
+            char ch = s.charAt(i);
             if (Character.isLetterOrDigit(ch)) {
                 length++;
             } else if (Character.isWhitespace(ch) && length != 0) {
@@ -223,7 +223,7 @@ Every close bracket has a corresponding open bracket of the same type.
         while (columnNumber > 0) {
             columnNumber--;
             int remainder = columnNumber % 26;
-            sb.append((char)('A'+remainder));
+            sb.append((char) ('A' + remainder));
             columnNumber /= 26;
         }
 
@@ -273,12 +273,43 @@ Every close bracket has a corresponding open bracket of the same type.
         int result = 0;
         for (int i = 0; i < columnTitle.length(); i++) {
             char ch = columnTitle.charAt(i);
-            result = (ch - 'A' + 1) + 26*result;
+            result = (ch - 'A' + 1) + 26 * result;
         }
         return result;
     }
 
+    /*
+    * Convert Binary To Decimal
+    * */
+    public static int convertBinaryToDecimal(String str) {
+        int length = str.length();
+        int result = 0;
+        int k=0;
+        for (int i = length - 1; i >= 0; i--) {
+            char ch = str.charAt(i);
+            if (ch == '1') {
+                result += (int) Math.pow(2, k);
+            }
+            k++;
+        }
+        return result;
+    }
+
+    /*
+    * Convert Decimal to Binary
+    * */
+    public static String convertDecimalToBinary(int num) {
+        StringBuilder sb = new StringBuilder();
+        while (num != 0) {
+            int remainder = num % 2;
+            num = num / 2;
+            sb.append(remainder);
+        }
+        return sb.reverse().toString();
+    }
+
+
     public static void main(String[] args) {
-        System.out.println(titleToNumber("AB"));;
+        System.out.println(convertDecimalToBinary(72));
     }
 }

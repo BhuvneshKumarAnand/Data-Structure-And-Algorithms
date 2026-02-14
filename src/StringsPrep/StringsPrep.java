@@ -279,12 +279,12 @@ Every close bracket has a corresponding open bracket of the same type.
     }
 
     /*
-    * Convert Binary To Decimal
-    * */
+     * Convert Binary To Decimal
+     * */
     public static int convertBinaryToDecimal(String str) {
         int length = str.length();
         int result = 0;
-        int k=0;
+        int k = 0;
         for (int i = length - 1; i >= 0; i--) {
             char ch = str.charAt(i);
             if (ch == '1') {
@@ -296,8 +296,8 @@ Every close bracket has a corresponding open bracket of the same type.
     }
 
     /*
-    * Convert Decimal to Binary
-    * */
+     * Convert Decimal to Binary
+     * */
     public static String convertDecimalToBinary(int num) {
         StringBuilder sb = new StringBuilder();
         while (num != 0) {
@@ -348,8 +348,71 @@ Every close bracket has a corresponding open bracket of the same type.
         return sb.reverse().toString();
     }
 
+    /*
+    * Reverse Vowels of a String
+    *
+    Given a string s, reverse only all the vowels in the string and return it.
+
+    The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+
+
+    Example 1:
+
+    Input: s = "IceCreAm"
+
+    Output: "AceCreIm"
+
+    Explanation:
+
+    The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "AceCreIm".
+
+    Example 2:
+
+    Input: s = "leetcode"
+
+    Output: "leotcede"
+
+
+
+    Constraints:
+
+    1 <= s.length <= 3 * 105
+    s consist of printable ASCII characters.
+    * */
+
+    public static String reverseVowels(String s) {
+        int left=0;
+        int right=s.length()-1;
+        char[] arr = s.toCharArray();
+        while (left<right) {
+
+            while (left < right && !isVowel(arr[left])){
+                left++;
+            }
+            while (left < right && !isVowel(arr[right])){
+                right--;
+            }
+
+            char tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
+            left++;
+            right--;
+        }
+        return  new String(arr);
+    }
+
+    private static boolean isVowel(char ch) {
+        return ch == 'a' || ch == 'A' ||
+                ch == 'e' || ch == 'E' ||
+                ch == 'i' || ch == 'I' ||
+                ch == 'o' || ch == 'O' ||
+                ch == 'u' || ch == 'U';
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(addBinary("11", "1"));
+        System.out.println(reverseVowels("leetcode"));
     }
 }

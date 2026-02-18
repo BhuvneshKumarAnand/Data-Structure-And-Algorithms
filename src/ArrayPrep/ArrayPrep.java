@@ -586,17 +586,40 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         int k =1;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i-1]) {
-                nums[k++] = nums[i];
+                nums[k] = nums[i];
+                k++;
             }
         }
         return k;
+    }
+
+    public int search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0] == target ? 0 : -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            if (nums[left] == target) {
+                return left;
+            }else if (nums[right] == target) {
+                return right;
+            }else{
+                left++;
+                right--;
+            }
+        }
+        return -1;
     }
 
 
 
     public static void main(String[] args) {
         int[] arr1 = {0, 6, 0, 0};
-        int[] arr2 = {1,1,2};
+        int[] arr2 = {1,1,2,2,3,3,3,5,6};
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);

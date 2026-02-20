@@ -615,11 +615,35 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         return -1;
     }
 
+    public static int removeElement(int[] nums, int val) {
+        int i = 0;
+        int j = nums.length - 1;
+        while (i <= j) {
+            if (nums[i] == val && nums[j] != val) {
+                nums[i]  = nums[j];
+                nums[j]  = val;
+                i++;
+                j--;
+            }else if(nums[j] == val && nums[i] != val){
+                j--;
+                i++;
+            } else if(nums[i] == val &&  nums[j] == val){
+                j--;
+            } else if(nums[i] != val && nums[j] != val){
+                i++;
+            }else{
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+
 
 
     public static void main(String[] args) {
-        int[] arr1 = {0, 6, 0, 0};
-        int[] arr2 = {1,1,2,2,3,3,3,5,6};
+        int[] arr1 = {3,2,2,3};
+        int[] arr2 = {0,1,2,2,3,0,4,2};
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);
@@ -627,6 +651,9 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 //        pushZerosAtEnd(arr1);
 //        intersection(arr1, arr2);
 
-        System.out.println(removeDuplicates(arr2));
+//        System.out.print(Arrays.toString(arr2));
+//        System.out.println(removeElement(arr2, 2));
+        System.out.println(removeElement(arr1, 3));
+//        System.out.print(Arrays.toString(arr2));
     }
 }

@@ -456,22 +456,22 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
     public int romanToInt(String s) {
         int len = s.length();
-        int[]  arr = new int[len];
+        int[] arr = new int[len];
         for (int i = 0; i < len; i++) {
-            if(s.charAt(i)=='I'){
-                arr[i]=1;
-            }else if(s.charAt(i)=='V'){
-                arr[i]=5;
-            }else if(s.charAt(i)=='X'){
-                arr[i]=10;
-            }else if(s.charAt(i)=='L'){
-                arr[i]=50;
-            }else if(s.charAt(i)=='C'){
-                arr[i]=100;
-            }else if(s.charAt(i)=='D'){
-                arr[i]=500;
-            }else if(s.charAt(i)=='M'){
-                arr[i]=1000;
+            if (s.charAt(i) == 'I') {
+                arr[i] = 1;
+            } else if (s.charAt(i) == 'V') {
+                arr[i] = 5;
+            } else if (s.charAt(i) == 'X') {
+                arr[i] = 10;
+            } else if (s.charAt(i) == 'L') {
+                arr[i] = 50;
+            } else if (s.charAt(i) == 'C') {
+                arr[i] = 100;
+            } else if (s.charAt(i) == 'D') {
+                arr[i] = 500;
+            } else if (s.charAt(i) == 'M') {
+                arr[i] = 1000;
             }
         }
         int sum = 0;
@@ -583,9 +583,9 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
             return 0;
         }
 
-        int k =1;
+        int k = 1;
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[i-1]) {
+            if (nums[i] != nums[i - 1]) {
                 nums[k] = nums[i];
                 k++;
             }
@@ -605,9 +605,9 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         while (left < right) {
             if (nums[left] == target) {
                 return left;
-            }else if (nums[right] == target) {
+            } else if (nums[right] == target) {
                 return right;
-            }else{
+            } else {
                 left++;
                 right--;
             }
@@ -620,18 +620,18 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         int j = nums.length - 1;
         while (i <= j) {
             if (nums[i] == val && nums[j] != val) {
-                nums[i]  = nums[j];
-                nums[j]  = val;
+                nums[i] = nums[j];
+                nums[j] = val;
                 i++;
                 j--;
-            }else if(nums[j] == val && nums[i] != val){
+            } else if (nums[j] == val && nums[i] != val) {
                 j--;
                 i++;
-            } else if(nums[i] == val &&  nums[j] == val){
+            } else if (nums[i] == val && nums[j] == val) {
                 j--;
-            } else if(nums[i] != val && nums[j] != val){
+            } else if (nums[i] != val && nums[j] != val) {
                 i++;
-            }else{
+            } else {
                 i++;
                 j--;
             }
@@ -678,21 +678,74 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
                 return mid;
-            }else if (nums[mid] < target) {
+            } else if (nums[mid] < target) {
                 left = mid + 1;
-            }else{
+            } else {
                 right = mid - 1;
             }
         }
         return left;
     }
 
+    /*
+    * Plus One
+    *
+    You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the
+    * integer. The digits are ordered from most significant to least significant in left-to-right order. The large
+    * integer does not contain any leading 0's.
 
+    Increment the large integer by one and return the resulting array of digits.
+
+
+
+    Example 1:
+
+    Input: digits = [1,2,3]
+    Output: [1,2,4]
+    Explanation: The array represents the integer 123.
+    Incrementing by one gives 123 + 1 = 124.
+    Thus, the result should be [1,2,4].
+    Example 2:
+
+    Input: digits = [4,3,2,1]
+    Output: [4,3,2,2]
+    Explanation: The array represents the integer 4321.
+    Incrementing by one gives 4321 + 1 = 4322.
+    Thus, the result should be [4,3,2,2].
+    Example 3:
+
+    Input: digits = [9]
+    Output: [1,0]
+    Explanation: The array represents the integer 9.
+    Incrementing by one gives 9 + 1 = 10.
+    Thus, the result should be [1,0].
+
+
+    Constraints:
+
+    1 <= digits.length <= 100
+    0 <= digits[i] <= 9
+    digits does not contain any leading 0's.
+    * */
+
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        int[] ans = new int[digits.length + 1];
+        ans[0] = 1;
+        return ans;
+    }
 
     public static void main(String[] args) {
-        int[] arr1 = {3,2,2,3};
-        int[] arr2 = {0,1,2,2,3,0,4,2};
-        int[] arr3 = {1,3,5,6};
+        int[] arr1 = {3, 2, 2, 3};
+        int[] arr2 = {0, 1, 2, 2, 3, 0, 4, 2};
+        int[] arr3 = {4, 3, 2, 1};
+        int[] arr4 = {9};
 //        int[] out = new int[arr1.length];
 
 //        sumOfTwoArrays(arr1, arr2, out);
@@ -702,6 +755,6 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
 
 //        System.out.print(Arrays.toString(arr2));
 //        System.out.println(removeElement(arr2, 2));
-        System.out.println(searchInsert(arr3, 5));
+        System.out.println(Arrays.toString(plusOne(arr4)));
     }
 }

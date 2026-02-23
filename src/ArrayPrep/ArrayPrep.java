@@ -775,11 +775,27 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
     * */
 
     /* Solution 1 */
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    /*public static void merge(int[] nums1, int m, int[] nums2, int n) {
         for (int i = 0; i < n; i++) {
             nums1[i + m] = nums2[i];
         }
         Arrays.sort(nums1);
+    }*/
+
+    /* Solution 2 */
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1, j = n - 1, k= m + n - 1;
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i--];
+            }else{
+                nums1[k] = nums2[j--];
+            }
+            k--;
+        }
+        while (i >= 0) {
+            nums1[k] = nums1[i--];
+        }
     }
 
     public static void main(String[] args) {

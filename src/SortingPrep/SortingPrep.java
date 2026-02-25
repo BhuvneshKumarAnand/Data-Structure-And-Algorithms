@@ -6,13 +6,13 @@ public class SortingPrep {
 
     /* Bubble Sort */
     public static int[] bubbleSort(int[] arr) {
-        int len = arr.length;
-        for (int i = 0; i < len; i++) {
-            for (int j = i + 1; j < len; j++) {
-                if (arr[i] > arr[j]) {
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
@@ -20,7 +20,7 @@ public class SortingPrep {
     }
 
     public static void main(String[] args) {
-        int[] arr = {4,6,1,2,5};
+        int[] arr = {4, 6, 1, 2, 5};
         System.out.println(Arrays.toString(bubbleSort(arr)));
     }
 }

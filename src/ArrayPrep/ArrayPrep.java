@@ -4,6 +4,7 @@ import java.lang.Math;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ArrayPrep {
     /*
@@ -796,6 +797,68 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
         while (i >= 0) {
             nums1[k] = nums1[i--];
         }
+    }
+
+    /*
+    * Happy Number
+    *
+    Write an algorithm to determine if a number n is happy.
+
+    A happy number is a number defined by the following process:
+
+    Starting with any positive integer, replace the number by the sum of the squares of its digits.
+    Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does
+    * not include 1.
+    Those numbers for which this process ends in 1 are happy.
+    Return true if n is a happy number, and false if not.
+    * */
+    public static boolean isHappy(int n) {
+        if  (n == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
+    * Majority Element
+    Given an array nums of size n, return the majority element.
+
+    The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element
+    * always exists in the array.
+
+
+
+    Example 1:
+
+    Input: nums = [3,2,3]
+    Output: 3
+    Example 2:
+
+    Input: nums = [2,2,1,1,1,2,2]
+    Output: 2
+    * */
+    public static int majorityElement(int[] nums) {
+        return 0;
+    }
+
+
+    /*
+    *Contains Duplicate
+    *
+    Given an integer array nums, return true if any value appears at least twice in the array, and return false if
+    * every element is distinct.
+    * */
+
+    public boolean containsDuplicate(int[] nums) {
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (nums[i] == nums[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {

@@ -53,9 +53,35 @@ public class BitManipulationPrep {
         return result;
     }
 
+    /*
+    * Number of 1 Bits
+    Given a positive integer n, write a function that returns the number of set bits in its binary representation
+    * (also known as the Hamming weight).
+    * */
+
+    public static int hammingWeight(int n) {
+        StringBuilder sb = new StringBuilder();
+        while (n != 0) {
+            int remainder = n % 2;
+            n /= 2;
+            sb.append(remainder);
+        }
+
+        int count = 0;
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == '1') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+
 
     public static void main(String[] args) {
         int[] nums = {2,2,1};
-        System.out.println(singleNumber(nums));
+        int n = 8;
+        System.out.println(hammingWeight(n));
     }
 }

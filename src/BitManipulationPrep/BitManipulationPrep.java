@@ -116,6 +116,48 @@ public class BitManipulationPrep {
         return t1[t1.length - 1];
     }
 
+    /*
+    * Convert a Number to Hexadecimal
+    Given a 32-bit integer num, return a string representing its hexadecimal representation. For negative integers,
+    * two’s complement method is used.
+
+    All the letters in the answer string should be lowercase characters, and there should not be any leading zeros
+    * in the answer except for the zero itself.
+
+    Note: You are not allowed to use any built-in library method to directly solve this problem.
+    * */
+
+    public static String toHex(int num) {
+        StringBuilder sb = new StringBuilder();
+        while(num != 0) {
+            int remainder = num % 16;
+            num /= 16;
+            if (remainder <= 9){
+                sb.append(remainder);
+            }else {
+                sb.append(getRemainder(remainder));
+            }
+        }
+        return sb.toString();
+    }
+
+    public static char getRemainder(int num) {
+        if (num == 10) {
+            return 'a';
+        }  else if (num == 11) {
+            return 'b';
+        } else if (num == 12) {
+            return 'c';
+        }  else if (num == 13) {
+            return 'd';
+        }  else if (num == 14) {
+            return 'e';
+        }   else if (num == 15) {
+            return 'f';
+        } else{
+            return ' ';
+        }
+    }
 
 
     public static void main(String[] args) {

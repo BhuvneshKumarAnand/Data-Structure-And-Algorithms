@@ -4,7 +4,15 @@ import java.util.Arrays;
 
 public class SortingPrep {
 
-    /* Bubble Sort */
+    /* Bubble Sort
+    * Bubble Sort is a simple sorting algorithm that:
+
+    Repeatedly compares adjacent elements and swaps them if they are in the wrong order.
+
+    It is called “Bubble” because:
+
+    The largest element bubbles up to the end in each pass (like air bubbles rising in water).
+    *  */
     public static int[] bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -17,6 +25,11 @@ public class SortingPrep {
             }
         }
         return arr;
+    }
+
+    /* Selection Sort */
+    public static int[] selectionSort(int[] arr) {
+
     }
 
     public static void main(String[] args) {

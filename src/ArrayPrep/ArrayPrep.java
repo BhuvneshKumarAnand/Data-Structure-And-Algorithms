@@ -850,6 +850,7 @@ Similarly, we can see at index 3 and 5, the elements to its left sum up to 15 an
     * */
 
     public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
         int len = nums.length;
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {

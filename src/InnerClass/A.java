@@ -1,6 +1,6 @@
 package InnerClass;
 
-public class A {
+ class A {
     public void show(){
         System.out.println("In Show...");
     }
@@ -8,6 +8,12 @@ public class A {
     class B {
         public void config(){
             System.out.println("In Config...");
+        }
+    }
+
+    static class C {
+        public void show(){
+            System.out.println("In C...");
         }
     }
 }

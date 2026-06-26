@@ -28,9 +28,9 @@ public class SortingPrep {
     }
 
     /* Selection Sort */
-    public static int[] selectionSort(int[] arr) {
-
-    }
+//    public static int[] selectionSort(int[] arr) {
+//
+//    }
 
     public static void main(String[] args) {
         int[] arr = {4, 6, 1, 2, 5};

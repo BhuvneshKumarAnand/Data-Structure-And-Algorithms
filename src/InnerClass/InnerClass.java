@@ -11,6 +11,7 @@ public class InnerClass {
         A.C obj1 = new A.C(); // static inner class can be instantiated without the object of parent class
         // obj1.show();
 
+        // Anonymous Inner Class
         A obj2 = new A(){
             @Override
             public void show(){
@@ -18,5 +19,14 @@ public class InnerClass {
             }
         };
         obj2.show();
+
+        // Anonymous Inner Class With Abstract Class
+        B obj3 = new B(){
+            @Override
+            public void show(){
+                System.out.println("In show 3...");
+            }
+        };
+        obj3.show();
     }
 }
